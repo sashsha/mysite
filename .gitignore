@@ -1,0 +1,12 @@
+/bootstrap/compiled.php
+/app/config/local/mail.php
+/vendor
+composer.phar
+composer.lock
+CONTRIBUTING.md
+.env.*.php
+.env.php
+.ds_store
+thumbs.db
+_ide_helper.php
+.idea
