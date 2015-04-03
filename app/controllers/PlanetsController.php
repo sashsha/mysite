@@ -2,7 +2,22 @@
 
 class PlanetsController extends BaseController {
 
+    /**
+     * Get form for add planets
+     *
+     * @return \Illuminate\View\View
+     */
     public function getAdd() {
+        $user = Auth::user();
+
+        if (!$user) {
+            //App::abort(403, Lang::get('messages.create_only_logged'));
+            $error = [
+                'code' => 403,
+                'message' => Lang::get('messages.create_only_logged'),
+            ];
+            return View::make('errors/error', array('error' => $error));
+        }
         return View::make('planets/add');
     }
 

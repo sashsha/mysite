@@ -39,10 +39,12 @@
                     <a class="navbar-brand" href="/">SBShare.ru</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <!-- NAVIGATION ITEMS -->
-                        <li><a href="/planets/add">Добавить планету</a></li>
-                    </ul>
+                    @if (Auth::check())
+                        <ul class="nav navbar-nav">
+                            <!-- NAVIGATION ITEMS -->
+                            <li><a href="/planets/add">Добавить планету</a></li>
+                        </ul>
+                    @endif
 
                     @if (!Auth::check())
                         <form class="navbar-form navbar-right" role="form" action="{{ action('UsersController@postLogin') }}" method="post">
