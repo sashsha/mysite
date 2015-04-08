@@ -66,8 +66,17 @@
             <td>Просмотров:</td>
             <td>{{ $planet->views }}</td>
         </tr>
+        <tr>
+            <td>Комментарий:</td>
+            <td>{{ $planet->comment }}</td>
+        </tr>
     </table>
-    <p>&nbsp;</p>
-    <p>{{{ $planet->comment }}}</p>
+    @if($planet->author == Auth::user())
+        <div class="button-actions">
+            {{ Form::open(array('url' => action('PlanetsController@postDelete', $planet->id), 'method' => 'post', 'role' => 'form', 'class' => 'form-group')) }}
+            {{ Form::submit('Delete', array('class' => 'btn btn-danger'))}}
+            {{ Form::close() }}
+        </div>
+    @endif
 </div>
 @stop

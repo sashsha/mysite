@@ -1,6 +1,6 @@
 <?php
 
-class PlanetsController extends BaseController {
+class PlanetsController extends \BaseController {
 
     /**
      * Get form for add planets
@@ -22,6 +22,12 @@ class PlanetsController extends BaseController {
     }
 
     public function postAdd() {
+        $user = Auth::user();
+
+        if (!$user) {
+            return Lang::get('messages.create_only_logged');
+        }
+
         $data = Input::all();
 
         $validation = Validator::make($data, Planet::getValidationRules());
@@ -49,5 +55,16 @@ class PlanetsController extends BaseController {
         $planet->save();
 
         return View::make('planets/view', array('planet' => $planet));
+    }
+
+    /**
+     * Delete planet
+     *
+     * @param integer $planetId
+     * @return Response
+     */
+    public function postDelete($planetId)
+    {
+
     }
 }
