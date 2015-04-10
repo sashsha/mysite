@@ -70,7 +70,23 @@ class Planet extends Eloquent {
         return $validation;
     }
 
-    public function author() {
+    public function author()
+    {
         return $this->belongsTo('User', 'user_id');
+    }
+
+    /**
+     * If the authenticated user is the author of the planet
+     *
+     * @return bool
+     */
+    public function isAuthor()
+    {
+
+        if ($this->author == Auth::user()) {
+            return true;
+        }
+
+        return false;
     }
 }

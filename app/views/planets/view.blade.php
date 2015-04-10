@@ -73,6 +73,10 @@
     </table>
     @if($planet->author == Auth::user())
         <div class="button-actions">
+            {{ Form::open(array('url' => action('PlanetsController@getEdit', $planet->id), 'method' => 'get', 'role' => 'form', 'class' => 'form-group')) }}
+            {{ Form::submit('Edit', array('class' => 'btn btn-warning'))}}
+            {{ Form::close() }}
+
             {{ Form::open(array('url' => action('PlanetsController@postDelete', $planet->id), 'method' => 'post', 'role' => 'form', 'class' => 'form-group')) }}
             {{ Form::submit('Delete', array('class' => 'btn btn-danger'))}}
             {{ Form::close() }}
