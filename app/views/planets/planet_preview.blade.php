@@ -9,15 +9,15 @@
     <p>{{{ $planet->comment }}}</p>
 
     <p>
-        Добавил: <b>
+        @lang('planet.title_edit'): <b>
             @if ($planet->author)
                 {{ $planet->author->username }}
             @else
                 Аноним
             @endif
         </b><br />
-        Просмотров: {{ $planet->views }}
+        @lang('planet.views'): {{ $planet->views }}
     </p>
 
-    <p><a class="btn btn-default" href="{{ action('PlanetsController@getView', array($planet->id)) }}" role="button">Детали планеты &raquo;</a></p>
+    <p><a class="btn btn-default" href="{{ action('PlanetsController@show', array($planet->id)) }}" role="button">Детали планеты &raquo;</a></p>
 </div>

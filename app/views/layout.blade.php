@@ -51,7 +51,7 @@
                     @if (Auth::check())
                     <ul class="nav navbar-nav">
                         <!-- NAVIGATION ITEMS -->
-                        <li><a href="/planets/add">Добавить планету</a></li>
+                        <li><a href="/planets/create">@lang('planet.title_index')</a></li>
                     </ul>
                     @endif
 

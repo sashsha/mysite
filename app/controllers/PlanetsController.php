@@ -2,9 +2,16 @@
 
 class PlanetsController extends BaseController
 {
+    /**
+     * get form for add planets
+     *
+     * @return mixed
+     */
 
-    public function getAdd()
+
+    public function create()
     {
+
         $user = Auth::user();
 
         if (!$user) {
@@ -16,11 +23,17 @@ class PlanetsController extends BaseController
             ];
             return View::make('errors/error', array('error' => $error));
         }
-        return View::make('planets/add');
+        $planet = null;
+        return View::make('planets/add', array('planet' => $planet));
 
     }
 
-    public function postAdd() {
+    /**
+     * Create planets
+     *
+     * @return mixed
+     */
+    public function store() {
         $user = Auth::user();
 
         if (!$user) {
@@ -38,10 +51,16 @@ class PlanetsController extends BaseController
             $data['user_id'] = Auth::user()->id;
         }
         $planet = Planet::create($data);
-        return Redirect::to(action('PlanetsController@getView', array($planet->id)));
+        return Redirect::to(action('PlanetsController@show', array($planet->id)));
     }
 
-    public function getView($planetId) {
+    /**
+     * get planets
+     *
+     * @param $planetId
+     * @return mixed
+     */
+    public function Show($planetId) {
         $planet = Planet::find($planetId);
 
         // Если такой планеты нет, то вернем пользователю ошибку 404 - Не найдено
@@ -63,7 +82,7 @@ class PlanetsController extends BaseController
      * @return mixed
      */
 
-    public function postDelete($planetId)
+    public function destroy($planetId)
     {
         $planet = Planet::find($planetId);
 
@@ -94,7 +113,7 @@ class PlanetsController extends BaseController
      * @param integer $planetId
      * @return mixed
      */
-    public function getEdit($planetId)
+    public function edit($planetId)
     {
         $planet = Planet::find($planetId);
         if (!$planet) {
@@ -113,7 +132,13 @@ class PlanetsController extends BaseController
 
     }
 
-    public function postEdit()
+    /**
+     * update planets
+     *
+     * @return mixed
+     */
+
+    public function update()
     {
         $planet = Planet::find($planetId);
 
@@ -124,9 +149,7 @@ class PlanetsController extends BaseController
             ];
             return View::make('errors/error', array('error' => $error));
         }
-        /**
-         * @var Planet $planet
-         */
+
 
         if (!$planet->isAuthor()) {
             return Lang::get('messages.delete_only_logged');

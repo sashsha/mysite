@@ -7,8 +7,8 @@
 @section('content')
 <div class="jumbotron">
     <div class="container">
-        <h1>Русская база координат Starbound</h1>
-        <p>Планет в базе: {{ $counter }}</p>
+        <h1>@lang('planet.title_index')</h1>
+        <p>@lang('planet.count_in_database') {{ $counter }}</p>
     </div>
 </div>
 

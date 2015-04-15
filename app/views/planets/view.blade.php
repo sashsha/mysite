@@ -1,14 +1,14 @@
 @extends('layout')
 
 @section('title')
-Планета {{ $planet->planet }}
+    @lang('planet.title_show', array('planetName' => $planet->planet))
 @stop
 
 @section('content')
 <div class="jumbotron">
     <div class="container">
         <h2>
-            Планета {{{ $planet->planet }}}
+            @lang('planet.title_show'  , array('planetName' => $planet->planet))
         </h2>
     </div>
 </div>
@@ -16,68 +16,68 @@
 <div class="container">
     <table class="table table-striped">
         <tr>
-            <td>Сектор:</td>
+            <td>@lang('planet.sector'):</td>
             <td>{{ Planet::$sectors[$planet->sector] }}</td>
         </tr>
         <tr>
-            <td>Уровень:</td>
+            <td>@lang('planet.level'):</td>
             <td>{{ $planet->level }}</td>
         </tr>
         <tr>
-            <td>Звезда:</td>
+            <td>@lang('planet.star'):</td>
             <td>{{{ $planet->star }}}</td>
         </tr>
         <tr>
-            <td>Система:</td>
+            <td>@lang('planet.system'):</td>
             <td>{{{ $planet->system }}}</td>
         </tr>
         <tr>
-            <td>Планета:</td>
+            <td>@lang('planet.planet'):</td>
             <td>{{{ $planet->planet }}}</td>
         </tr>
         <tr>
-            <td>Биом:</td>
+            <td>@lang('planet.biome'):</td>
             <td>{{ Planet::$bioms[$planet->biome] }}</td>
         </tr>
         <tr>
-            <td>Координаты:</td>
+            <td>@lang('planet.coordinates'):</td>
             <td>
                 <table>
                     <tr>
-                        <td>X:</td>
+                        <td>@lang('planet.coordinates_x'):</td>
                         <td>{{ $planet->x }}</td>
                     </tr>
                     <tr>
-                        <td>Y:</td>
+                        <td>@lang('planet.coordinates_y'):</td>
                         <td>{{ $planet->y }}</td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
-            <td>Версия игры:</td>
+            <td>@lang('planet.version_game'):</td>
             <td>{{ Planet::$versions[$planet->version] }}</td>
         </tr>
         <tr>
-            <td>OS (операционная система):</td>
+            <td>@lang('planet.os'):</td>
             <td>{{ Planet::$oses[$planet->os] }}</td>
         </tr>
         <tr>
-            <td>Просмотров:</td>
+            <td>@lang('planet.views'):</td>
             <td>{{ $planet->views }}</td>
         </tr>
         <tr>
-            <td>Коментарий:</td>
+            <td>@lang('planet.comment'):</td>
             <td>{{{ $planet->comment }}}</td>
         </tr>
     </table>
-    @if( $planet->author == Auth::user() )
+    @if(Auth::check() && $planet->author == Auth::user() )
         <div class="button-actions">
-            {{ Form::open(array('url' => action('PlanetsController@getEdit', $planet->id), 'method' => 'get','role' => 'form', 'class' => 'form-group')) }}
+            {{ Form::open(array('url' => action('PlanetsController@edit', $planet->id), 'method' => 'get','role' => 'form', 'class' => 'form-group')) }}
             {{ Form::submit('Edit', array('class' => 'btn btn-warning'))}}
             {{ Form::close() }}
 
-            {{ Form::open(array('url' => action('PlanetsController@postDelete', $planet->id), 'method' => 'post','role' => 'form', 'class' => 'form-group')) }}
+            {{ Form::open(array('url' => action('PlanetsController@destroy', $planet->id), 'method' => 'delete','role' => 'form', 'class' => 'form-group')) }}
             {{ Form::submit('Delete', array('class' => 'btn btn-danger'))}}
             {{ Form::close() }}
         </div>
