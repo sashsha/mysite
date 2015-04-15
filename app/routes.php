@@ -16,6 +16,6 @@ Route::get('/', array(
     'uses' => 'IndexController@getIndex'
 ));
 
-Route::controller('planets', 'PlanetsController');
+Route::resource('planets', 'PlanetsController');
 Route::controller('users', 'UsersController');
 Route::controller('password', 'RemindersController');

@@ -1,6 +1,7 @@
 <?php
 
-class UsersController extends BaseController {
+class UsersController extends BaseController
+{
 
     public function getRegister() {
         return View::make('users/register');
@@ -18,14 +19,14 @@ class UsersController extends BaseController {
         $user = new User();
         $user->fill(Input::all());
         $id = $user->register();
-        return $this->getMessage("Регистрация почти завершена. Вам необходимо подтвердить e-mail, указанный при регистрации, перейдя по ссылке в письме.");
+        return $this->getMessage(Lang::get('user.registration_complete'));
     }
 
     public function getActivate($userId, $activationCode) {
         // Получаем указанного пользователя
         $user = User::find($userId);
         if (!$user) {
-            return $this->getMessage("Неверная ссылка на активацию аккаунта.");
+            return $this->getMessage(Lang::get('user.invalid_link_activate'));
         }
 
         // Пытаемся его активировать с указанным кодом
@@ -33,11 +34,11 @@ class UsersController extends BaseController {
             // В случае успеха авторизовываем его
             Auth::login($user);
             // И выводим сообщение об успехе
-            return $this->getMessage("Аккаунт активирован", "/");
+            return $this->getMessage(Lang::get('user.account_activated'), "/");
         }
 
         // В противном случае сообщаем об ошибке
-        return $this->getMessage("Неверная ссылка на активацию аккаунта, либо учетная запись уже активирована.");
+        return $this->getMessage(Lang::get('user.invalid_link_activate_or_account_activated'));
     }
 
     public function getLogin() {
@@ -70,7 +71,7 @@ class UsersController extends BaseController {
             Log::info("User [{$username}] failed to login.");
         }
 
-        $alert = "Неверная комбинация имени (email) и пароля, либо учетная запись еще не активирована.";
+        $alert = Lang::get('user.invalid_combination_or_account_not_activated');
 
         // Возвращаем пользователя назад на форму входа с временной сессионной
         // переменной alert (withAlert)

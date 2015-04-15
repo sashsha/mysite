@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-Восстановление пароля
+    @lang('user.password_recovery')
 @stop
 
 @section('content')
@@ -15,11 +15,11 @@
             {{ Session::get('error') }}
         </div>
     @endif
-    <h2>Восстановление пароля</h2>
+    <h2>@lang('user.password_recovery')</h2>
 
     {{ Form::open(array('url' => action('RemindersController@postRemind'), 'method' => 'post', 'role' => 'form', 'class' => 'form-horizontal')) }}
     <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">Ваш E-Mail</label>
+        <label for="email" class="col-sm-2 control-label">@lang('user.email')</label>
         <div class="col-sm-5">
             {{ Form::email('email', null, array('class' => 'form-control')) }}
         </div>
@@ -28,7 +28,7 @@
     <div class="form-group">
         <div class="col-sm-2">&nbsp;</div>
         <div class="col-sm-5">
-            <button type="submit" class="btn btn-primary">Восстановить</button>
+            <button type="submit" class="btn btn-primary">@lang('action.recover')</button>
         </div>
     </div>
     {{ Form::close() }}

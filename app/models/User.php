@@ -121,7 +121,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         Mail::send('emails/activation',
             array('activationUrl' => $activationUrl),
             function ($message) use($userEmail) {
-                $message->to($userEmail)->subject('Спасибо за регистрацию!');
+                $message->to($userEmail)->subject(Lang::get('user.registration_thanks'));
             }
         );
     }

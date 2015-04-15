@@ -1,16 +1,16 @@
 @extends('layout')
 
 @section('title')
-    Планета удалена
+    @lang('planet.title_delete')
 @stop
 
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            <h1>Congratulations, planet "{{ $planetName}}" deleted!</h1>
+            <h1>@lang('planet.deleted_planet', array('planetName' => $planetName))</h1>
             <div>
-                <a href="{{{ URL::action('PlanetsController@getAdd') }}}">← Create new planet</a> /
-                <a href="{{ Config::get('app.url') }}">Go Home →</a>
+                <a href="{{{ URL::action('PlanetsController@create') }}}">← @lang('action.create_new_planet')</a> /
+                <a href="{{ Config::get('app.url') }}">@lang('action.home') →</a>
             </div>
         </div>
     </div>

@@ -49,18 +49,18 @@
                     @if (Auth::check())
                         <ul class="nav navbar-nav">
                             <!-- NAVIGATION ITEMS -->
-                            <li><a href="/planets/add">Добавить планету</a></li>
+                            <li><a href="/planets/create">@lang('planet.title_add')</a></li>
                         </ul>
                     @endif
 
                     @if (!Auth::check())
                         <form class="navbar-form navbar-right" role="form" action="{{ action('UsersController@postLogin') }}" method="post">
-                            <a href="/users/login" class="btn btn-success">Войти</a>
-                            <a href="/users/register" class="btn btn-success">Регистрация</a>
+                            <a href="/users/login" class="btn btn-success">@lang('action.login')</a>
+                            <a href="/users/register" class="btn btn-success">@lang('action.register')</a>
                         </form>
                     @else
                         <form class="navbar-form navbar-right" role="form" action="/users/logout">
-                            <button class="btn btn-success">Выйти</button>
+                            <button class="btn btn-success">@lang('action.logout')</button>
                         </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><strong>{{ Auth::user()->username }}</strong></a></li>

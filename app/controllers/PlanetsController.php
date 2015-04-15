@@ -1,13 +1,14 @@
 <?php
 
-class PlanetsController extends \BaseController {
+class PlanetsController extends \BaseController
+{
 
     /**
      * Get form for add planets
      *
      * @return \Illuminate\View\View
      */
-    public function getAdd() {
+    public function create() {
         $user = Auth::user();
 
         if (!$user) {
@@ -18,10 +19,16 @@ class PlanetsController extends \BaseController {
             ];
             return View::make('errors/error', array('error' => $error));
         }
-        return View::make('planets/add');
+        $planet = null;
+        return View::make('planets/add', array('planet' => $planet));
     }
 
-    public function postAdd() {
+    /**
+     * Create planets
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse|string
+     */
+    public function store() {
         $user = Auth::user();
 
         if (!$user) {
@@ -39,7 +46,7 @@ class PlanetsController extends \BaseController {
             $data['user_id'] = Auth::user()->id;
         }
         $planet = Planet::create($data);
-        return Redirect::to(action('PlanetsController@getView', array($planet->id)));
+        return Redirect::to(action('PlanetsController@show', array($planet->id)));
     }
 
     /**
@@ -48,7 +55,7 @@ class PlanetsController extends \BaseController {
      * @param integer $planetId
      * @return \Illuminate\View\View
      */
-    public function getView($planetId) {
+    public function show($planetId) {
         $planet = Planet::find($planetId);
 
         // Если такой планеты нет, то вернем пользователю ошибку 404 - Не найдено
@@ -74,7 +81,7 @@ class PlanetsController extends \BaseController {
      * @param integer $planetId
      * @return Response
      */
-    public function postDelete($planetId)
+    public function destroy($planetId)
     {
         $planet = Planet::find($planetId);
 
@@ -105,7 +112,7 @@ class PlanetsController extends \BaseController {
      * @param integer $planetId
      * @return \Illuminate\View\View|string
      */
-    public function getEdit($planetId)
+    public function edit($planetId)
     {
         $planet = Planet::find($planetId);
         if (!$planet) {
@@ -129,7 +136,7 @@ class PlanetsController extends \BaseController {
      * @param $planetId
      * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|string
      */
-    public function postEdit($planetId)
+    public function update($planetId)
     {
         $planet = Planet::find($planetId);
         if (!$planet) {
@@ -165,6 +172,6 @@ class PlanetsController extends \BaseController {
         $planet->comment = $data['comment'];
         $planet->save();
 
-        return Redirect::to(action('PlanetsController@getView', array($planet->id)));
+        return Redirect::to(action('PlanetsController@show', array($planet->id)));
     }
 }
