@@ -1,13 +1,13 @@
 <div class="form-group">
     <label for="sector" class="col-sm-2 control-label">@lang('planet.sector')</label>
     <div class="col-sm-5">
-        {{ Form::select('sector', Planet::$sectors, $planet ? $planet->sector : null, array('class' => 'form-control')) }}
+        {{ Form::select('sector', Planet::$sectors, $planet ? $planet->sector : null , array('class' => 'form-control')) }}
     </div>
 </div>
 <div class="form-group">
     <label for="level" class="col-sm-2 control-label">@lang('planet.level')</label>
     <div class="col-sm-5">
-        {{ Form::text('level',  $planet ? $planet->level : null, array('class' => 'form-control')) }}
+        {{ Form::text('level', $planet ? $planet->level : null, array('class' => 'form-control')) }}
     </div>
 </div>
 <div class="form-group">
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="planet" class="col-sm-2 control-label">@lang('planet.planet')</label>
+    <label for="planet" class="col-sm-2 control-label">@lang('planet.name')</label>
     <div class="col-sm-5">
         {{ Form::text('planet', $planet ? $planet->planet : null, array('class' => 'form-control')) }}
     </div>
@@ -59,7 +59,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="comment" class="col-sm-2 control-label">@lang('planet.commit')</label>
+    <label for="comment" class="col-sm-2 control-label">@lang('planet.comment')</label>
     <div class="col-sm-5">
         {{ Form::textarea('comment', $planet ? $planet->comment : null, array('class' => 'form-control bbeditor')) }}<br />
     </div>

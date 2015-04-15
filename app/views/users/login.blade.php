@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-Вход
+    @lang('action.login')
 @stop
 
 @section('headExtra')
@@ -17,16 +17,16 @@
     @endif
 
     <form class="form-signin" role="form" action="{{ action('UsersController@postLogin') }}" method="post">
-        <h2 class="form-signin-heading">Ваши данные</h2>
-        <input type="text" class="form-control" placeholder="Email или имя" name="username" required autofocus />
-        <input type="password" class="form-control" placeholder="Password" name="password" required />
+        <h2 class="form-signin-heading">@lang('user.data')</h2>
+        <input type="text" class="form-control" placeholder="@lang('user.email_or_name')" name="username" required autofocus />
+        <input type="password" class="form-control" placeholder="@lang('user.password')" name="password" required />
         <label class="checkbox">
-            <input type="checkbox" name="remember" value="remember-me"> Запомнить меня
+            <input type="checkbox" name="remember" value="remember-me"> @lang('user.remember_me')
         </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">@lang('action.login')</button>
 
-        <a href="/password/remind">Забыли пароль?</a><br />
-        <a href="/users/register">Регистрация</a>
+        <a href="/password/remind">@lang('action.password.forgot')?</a><br />
+        <a href="/users/register">@lang('action.register')</a>
     </form>
 </div>
 @stop

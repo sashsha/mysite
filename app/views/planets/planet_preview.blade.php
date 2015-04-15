@@ -2,22 +2,22 @@
     <h3>{{{ $planet->planet }}}</h3>
     <p>
         {{ date_create($planet->created_at)->format('d.m.Y H:i:s') }}<br />
-        OS: {{ Planet::$oses[$planet->os] }}, Уровень: {{ $planet->level }}<br />
-        Координаты: X {{ $planet->x }}, Y {{ $planet->y }}
+        @lang('planet.os'): {{ Planet::$oses[$planet->os] }}, @lang('planet.level'): {{ $planet->level }}<br />
+        @lang('planet.coordinates'): X {{ $planet->x }}, Y {{ $planet->y }}
     </p>
 
     <p>{{{ $planet->comment }}}</p>
 
     <p>
-        @lang('planet.title_edit'): <b>
+        @lang('planet.added'): <b>
             @if ($planet->author)
                 {{ $planet->author->username }}
             @else
-                Аноним
+                @lang('planet.anonym')
             @endif
         </b><br />
         @lang('planet.views'): {{ $planet->views }}
     </p>
 
-    <p><a class="btn btn-default" href="{{ action('PlanetsController@show', array($planet->id)) }}" role="button">Детали планеты &raquo;</a></p>
+    <p><a class="btn btn-default" href="{{ action('PlanetsController@show', array($planet->id)) }}" role="button">@lang('planet.planet_details') &raquo;</a></p>
 </div>

@@ -48,7 +48,7 @@ class Planet extends Eloquent {
     public static $oses = array(
         'windows'   => 'Windows',
         'linux'     => 'Linux',
-        'max'       => 'Max OS',
+        'mac'       => 'Mac OS',
     );
 
     public static function getValidationRules() {
@@ -75,12 +75,18 @@ class Planet extends Eloquent {
         return $this->belongsTo('User', 'user_id');
     }
 
-    public function  isAuthor()
+    /**
+     * If the authenticated user is the author of the planet
+     *
+     * @return bool
+     */
+    public function isAuthor()
     {
-        if ($this->author == Auth::user())
-        {
+
+        if ($this->author == Auth::user()) {
             return true;
         }
+
         return false;
     }
 }

@@ -6,17 +6,15 @@ class IndexController extends BaseController
     /**
      * Homepage
      *
-     * @return mixed
+     * @return \Illuminate\View\View
      */
     public function getIndex()
     {
-
         $user = Auth::user();
         if ($user) {
             $planets = Planet::where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->take(6)->get();
             $counter = Planet::where('user_id', '=', $user->id)->count();
-        }
-        else {
+        } else {
 
             $planets = Planet::orderBy('created_at', 'DESC')->take(6)->get();
             $counter = Planet::count();

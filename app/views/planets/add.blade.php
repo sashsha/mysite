@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-Добавление планеты
+    @lang('planet.title_add')
 @stop
 
 @section('content')
@@ -22,7 +22,7 @@
         <div class="form-group">
             <div class="col-sm-2">&nbsp;</div>
             <div class="col-sm-5">
-                <button type="submit" class="btn btn-primary submit-button">Добавить</button>
+                <button type="submit" class="btn btn-primary submit-button">@lang('action.add')</button>
             </div>
         </div>
         {{ Form::close() }}

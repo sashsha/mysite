@@ -16,6 +16,7 @@ return array(
     'registration_complete' => 'Registration is almost complete. You need to confirm e-mail, specified at registration by clicking on the link in the email',
     'registration_thanks' => 'Thank you for registering',
     'remember_me' => 'Remember me',
+
     'registration' => 'Registration',
     'username' =>'Username'
 

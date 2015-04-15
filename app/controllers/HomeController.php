@@ -20,4 +20,32 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+    /**
+     * Set language
+     *
+     * @param string $locale
+     * @return mixed
+     */
+    public function language($locale)
+    {
+        if (!is_null($locale)){
+            switch($locale){
+                case 'en':
+                    $language = 'en';
+                    break;
+                case 'ru':
+                    $language = 'ru';
+                    break;
+                default:
+                    $language = 'en';
+                    break;
+            }
+            if (!empty($language)){
+                Session::set('_locale', $language);
+            }
+        }
+        Illuminate\Support\Facades\App::setLocale($language);
+        return Redirect::action('IndexController@getIndex');
+    }
+
 }

@@ -1,0 +1,11 @@
+<?php
+
+return array(
+    'driver' => 'smtp',
+    'host' => 'smtp.gmail.com',
+    'port' => 465,
+    'from' => array('address' => 'info@mysite.dev', 'name' => 'Info MySite'),
+    'encryption' => 'ssl',
+    'username' => '*@gmail.com',
+    'password' => '*',
+);

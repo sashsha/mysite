@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<h2>Восстановление пароля</h2>
+		<h2>@lang('action.password.forgot')</h2>
 
 		<div>
-			Для сброса пароля перейдите по ссылке: {{ URL::to('password/reset', array($token)) }}.
+			@lang('action.go_to_reset_password'): {{ URL::to('password/reset', array($token)) }}.
 		</div>
 	</body>
 </html>
