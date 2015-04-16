@@ -77,7 +77,7 @@
             {{ Form::submit(Lang::get('action.edit'), array('class' => 'btn btn-warning'))}}
             {{ Form::close() }}
 
-            {{ Form::open(array('url' => action('PlanetsController@destroy', $planet->id), 'method' => 'delete', 'role' => 'form', 'class' => 'form-group')) }}
+            {{ Form::open(array('url' => action('PlanetsController@destroy', $planet->id), 'method' => 'delete', 'role' => 'form', 'class' => 'form-group', 'id' => 'deletePlanet', 'data-question' => Lang::get('messages.want_delete_planet'))) }}
             {{ Form::submit(Lang::get('action.delete'), array('class' => 'btn btn-danger'))}}
             {{ Form::close() }}
         </div>

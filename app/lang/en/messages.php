@@ -8,5 +8,6 @@ return array(
     'email_activation' => 'Hello! <br/><br/> Someone, perhaps you have the e-mail address when registering on the website :urlSite <br/> If you did not, then just ignore this email. <br/> <br/> If you did, then to complete the registration you must click on the link: <br />',
     'error_code' => 'Oops, :errorCode!',
     'planet_not_found' => 'Planet not found',
+    'want_delete_planet' => 'Are you sure you want to delete?'
 
 );
