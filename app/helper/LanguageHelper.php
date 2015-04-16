@@ -35,7 +35,7 @@ Class LanguageHelper
         $language = Session::get('_locale');
 
         if (empty($language)){
-            $language = Illuminate\Support\Facades\App::getLocate();
+            $language = App::getLocale();
         }
         $languages = self::all();
 

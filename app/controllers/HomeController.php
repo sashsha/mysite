@@ -44,8 +44,8 @@ class HomeController extends BaseController {
                 Session::set('_locale', $language);
             }
         }
-        Illuminate\Support\Facades\App::setLocale($language);
-        return Redirect::action('IndexController@getIndex');
+        App::setLocale($language);
+        return Redirect::back();
     }
 
 }

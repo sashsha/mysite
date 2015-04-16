@@ -77,7 +77,7 @@ App::down(function()
 | definitions instead of putting them all in the main routes file.
 |
 */
-Illuminate\Support\Facades\App::setLocal(LanguageHelper::getCurrent()['locale']);
+App::setLocale(LanguageHelper::getCurrent()['locale']);
 
 require app_path().'/filters.php';
 
