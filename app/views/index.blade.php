@@ -9,20 +9,18 @@
     <div class="container">
         <h1>@lang('planet.title_index')</h1>
 
-        <p>@lang('planet.count_in_database'): {{ $counter }}</p>
+        <p>@lang('planet.count_in_database'): {{ $planets->getTotal() }}</p>
     </div>
 </div>
 
 <div class="container">
-    <?php
-        $planets = array_chunk(iterator_to_array($planets), 3);
-    ?>
-    @foreach($planets as $planetsChunk)
+    @foreach(array_chunk($planets->getCollection()->all(), 3) as $planetsChunk)
         <div class="row">
             @foreach($planetsChunk as $planet)
                 @include('planets/planet_preview')
             @endforeach
         </div>
     @endforeach
+    {{$planets->links()}}
 </div>
 @stop
