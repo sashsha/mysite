@@ -74,7 +74,7 @@
             <td>@lang('planet.image'):</td>
             <td>
                 @if($planet->image)
-                    <img src="img/uploads/{{ $planet->image }}" style="max-width: 50%;">
+                    <img src="/img/uploads/{{ $planet->image }}" style="max-width: 50%;">
                 @else
                     -
                 @endif

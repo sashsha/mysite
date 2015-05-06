@@ -16,7 +16,7 @@
         @endif
         <h2>@lang('planet.title_edit')</h2>
 
-        {{ Form::open(array('url' => action('PlanetsController@update', $planet->id), 'method' => 'put', 'role' => 'form', 'class' => 'form-horizontal')) }}
+        {{ Form::open(array('url' => action('PlanetsController@update', $planet->id), 'method' => 'put', 'role' => 'form','files' => true , 'class' => 'form-horizontal')) }}
         @include('planets/form')
 
         <div class="form-group">

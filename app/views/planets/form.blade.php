@@ -64,3 +64,17 @@
         {{ Form::textarea('comment', $planet ? $planet->comment : null, array('class' => 'form-control bbeditor')) }}<br />
     </div>
 </div>
+    <div class="form-group">
+        <label for="image" class="col-sm-2 control-label">@lang('planet.image')</label>
+        <div class="col-sm-5">
+            @if($planet)
+                @if($planet->image)
+                 <img src="/img/uploads/{{ $planet->image }}" style="max-width: 100px; margin-bottom: 15px;" class="img-rounded">
+                @endif
+                {{Form::file('image', array('class' => 'form-control', 'style'))}}<br/>
+            @else
+                {{Form::file('image', array('class' => 'form-control'))}}<br/>
+            @endif
+        </div>
+
+</div>
