@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddRelationPlanets' => $baseDir . '/app/database/migrations/2015_05_07_163128_add_relation_planets.php',
+    'AddRelationStars' => $baseDir . '/app/database/migrations/2015_05_07_165416_add_relation_stars.php',
     'Barryvdh\\Debugbar\\Console\\ClearCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
     'Barryvdh\\Debugbar\\Console\\PublishCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/PublishCommand.php',
     'Barryvdh\\Debugbar\\Controllers\\AssetController' => $vendorDir . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
@@ -51,6 +53,7 @@ return array(
     'Boris\\ReadlineClient' => $vendorDir . '/d11wtq/boris/lib/Boris/ReadlineClient.php',
     'Boris\\ShallowParser' => $vendorDir . '/d11wtq/boris/lib/Boris/ShallowParser.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
+    'ChangeTablePlanets' => $baseDir . '/app/database/migrations/2015_05_07_161200_change_table_planets.php',
     'ClassPreloader\\Application' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Application.php',
     'ClassPreloader\\ClassList' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/ClassList.php',
     'ClassPreloader\\ClassLoader' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/ClassLoader.php',
@@ -63,6 +66,8 @@ return array(
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'CreatePasswordRemindersTable' => $baseDir . '/app/database/migrations/2014_07_13_141718_create_password_reminders_table.php',
     'CreatePlanetsTable' => $baseDir . '/app/database/migrations/2014_06_07_183117_create_planets_table.php',
+    'CreateTableSectors' => $baseDir . '/app/database/migrations/2015_05_07_161927_create_table_sectors.php',
+    'CreateTableStars' => $baseDir . '/app/database/migrations/2015_05_07_162805_create_table_stars.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2015_03_15_115953_create_users_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',

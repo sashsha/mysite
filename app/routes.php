@@ -17,7 +17,9 @@ Route::get('/', array(
 ));
 
 Route::resource('planets', 'PlanetsController');
+
 Route::controller('users', 'UsersController');
+
 Route::controller('password', 'RemindersController');
 
 Route::get('/language/{locale}', [
@@ -25,3 +27,12 @@ Route::get('/language/{locale}', [
     'uses' => 'HomeController@language'
 
 ]);
+
+Route::group([
+    'before' => 'auth',
+], function() {
+    Route::get('admin/test', [
+        'as' => 'test',
+        'uses' => 'AdminController@test',
+    ]);
+});

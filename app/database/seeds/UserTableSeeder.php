@@ -8,7 +8,7 @@ class UserTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('users')->delete();
+
         $count = rand(1 ,10);
 
         for($i=0; $i<$count;$i++) {

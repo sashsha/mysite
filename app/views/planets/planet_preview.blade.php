@@ -16,7 +16,7 @@
                 @lang('planet.anonym')
             @endif
         </b><br />
-        @lang('planet.views'): {{ $planet->views }}
+        @lang('planet.views'): {{ $planet->views ? $planet->views : 0}}
     </p>
 
     <p><a class="btn btn-default" href="{{ action('PlanetsController@show', array($planet->id)) }}" role="button">@lang('planet.planet_details') &raquo;</a></p>
